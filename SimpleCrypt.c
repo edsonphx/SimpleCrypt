@@ -2,32 +2,23 @@
 
 int main()
 {
-  int i = 2;
-  char ch;
+    char ch;
+    char *key = "key";
+    FILE *inputFile, *outputFile;
+    inputFile = fopen("inputFile.file","r");
+    outputFile=fopen("inputFile.file.crypt", "w");
 
-  FILE *inputFile, *outputFile;
-  inputFile = fopen("fileInput.file","r");
-  outputFile=fopen("fileInput.file.crypt", "w");
-
-  while(1)
-  {
+    while(1)
+    {
 	ch = fgetc(inputFile);
 	if(ch==EOF)
-	    break;
+	   break;
 	else
-	{
-	    if(i % 2 == 0 && i % 5 != 0)
-                ch += 35 - i;
-	    if(i % 5 == 0 && i % 2 != 0)
-                ch += 31 + i;
-            else
-                ch += i;
-  	    fputc(ch, outputFile);
-	}
-	i++;
-  }
-  fclose(inputFile);
-  fclose(outputFile);
-  remove("fileInput.file");
-  return 0;
+	   ch ^= (int)key;
+	fputc(ch, outputFile);
+    }
+    fclose(inputFile);
+    fclose(outputFile);
+    remove("inputFile.file");
+    return 0;
 }
