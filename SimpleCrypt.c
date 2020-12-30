@@ -5,8 +5,8 @@ int main()
     char ch;
     char *key = "key";
     FILE *inputFile, *outputFile;
-    inputFile = fopen("inputFile.file","r");
-    outputFile=fopen("inputFile.file.crypt", "w");
+    inputFile = fopen("inputFile.file", "r");
+    outputFile= fopen("inputFile.file.crypt", "w");
 
     while(1)
     {
